@@ -3,6 +3,18 @@ import styled from "styled-components";
 export const Section = styled.section`
   width: 100%;
   padding: 120px 0;
+
+  @media (max-width: 992px) {
+    padding: 100px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 70px 0;
+  }
 `;
 
 export const Container = styled.div`
@@ -14,18 +26,24 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 80px;
-`;
 
-export const Content = styled.div`
-  flex: 1;
+  @media (max-width: 992px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
 `;
 
 export const Image = styled.div`
   flex: 1;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
 export const ProfileImage = styled.img`
@@ -41,16 +59,41 @@ export const ProfileImage = styled.img`
   position: relative;
   top: -99px;
 
-  transition: all 0.3s ease;
+  transition: 0.3s;
 
   &:hover {
     transform: translateY(-8px);
   }
+
+  @media (max-width: 992px) {
+    width: 320px;
+    height: 420px;
+    top: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 360px;
+    top: 0;
+  }
+
+  @media (max-width: 480px) {
+    width: 220px;
+    height: 290px;
+  }
+`;
+
+export const Content = styled.div`
+  flex: 1;
 `;
 
 export const Text = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const Subtitle = styled.span`
@@ -64,20 +107,29 @@ export const Subtitle = styled.span`
 `;
 
 export const Title = styled.h2`
+  margin: 16px 0 24px;
+
   font-family: ${({ theme }) => theme.fonts.primary};
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
 
-  margin: 16px 0 24px;
+  @media (max-width: 768px) {
+    margin: 14px 0 18px;
+  }
 `;
 
 export const Description = styled.p`
   font-family: ${({ theme }) => theme.fonts.primary};
-  font-size: ${({ theme }) => theme.fontSizes.md};
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: ${({ theme }) => theme.colors.gray};
 
-  line-height: 1.8;
+  line-height: 1.9;
+  text-align: justify;
+
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `;
 
 export const Cards = styled.div`
@@ -85,16 +137,23 @@ export const Cards = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 
-  margin-top: 24px;
+  margin-top: 40px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Card = styled.div`
-  background-color: ${({ theme }) => theme.colors.surface};
+  background: ${({ theme }) => theme.colors.surface};
+
   padding: 24px;
+
   border-radius: ${({ theme }) => theme.borderRadius.medium};
+
   border: 1px solid ${({ theme }) => theme.colors.border};
 
-  transition: all 0.3s ease;
+  transition: 0.3s;
 
   &:hover {
     transform: translateY(-6px);
@@ -103,19 +162,22 @@ export const Card = styled.div`
 `;
 
 export const CardNumber = styled.h3`
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
   color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const CardTitle = styled.h4`
   margin-top: 8px;
+
   color: ${({ theme }) => theme.colors.white};
+
   font-size: ${({ theme }) => theme.fontSizes.lg};
 `;
 
 export const CardDescription = styled.p`
   margin-top: 8px;
+
   color: ${({ theme }) => theme.colors.gray};
+
   line-height: 1.6;
 `;

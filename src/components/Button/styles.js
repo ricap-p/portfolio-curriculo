@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledButton = styled.a`
   display: inline-flex;
@@ -7,6 +7,8 @@ export const StyledButton = styled.a`
   gap: 10px;
 
   padding: 16px 32px;
+
+  min-width: fit-content;
 
   background: ${({ theme, variant }) =>
     variant === "outline"
@@ -32,15 +34,17 @@ export const StyledButton = styled.a`
   cursor: pointer;
   text-decoration: none;
 
+  white-space: nowrap;
+
   transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
 
   svg {
     font-size: ${({ theme }) => theme.fontSizes.lg};
-    transition: transform 0.3s ease;
+    transition: transform .3s ease;
   }
 
   &:hover {
@@ -48,10 +52,10 @@ export const StyledButton = styled.a`
 
     background: ${({ theme, variant }) =>
       variant === "outline"
-        ? "rgba(255,122,0,0.08)"
+        ? "rgba(255,122,0,.08)"
         : theme.colors.primaryHover};
 
-    box-shadow: 0 10px 25px rgba(255, 122, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(255,122,0,.20);
   }
 
   &:hover svg {
@@ -60,5 +64,27 @@ export const StyledButton = styled.a`
 
   &:active {
     transform: translateY(0);
+  }
+
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
+
+  @media (max-width: 768px) {
+    padding: 12px 22px;
+
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+
+    svg {
+      font-size: ${({ theme }) => theme.fontSizes.md};
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 18px;
+
+    font-size: .85rem;
   }
 `;
